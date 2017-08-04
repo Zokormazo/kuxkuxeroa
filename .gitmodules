@@ -1,0 +1,6 @@
+[submodule "bot"]
+	path = bot
+	url = git@github.com:Zokormazo/kuxkuxeroa-bot.git
+[submodule "api"]
+	path = api
+	url = git@github.com:Zokormazo/kuxkuxeroa-api.git

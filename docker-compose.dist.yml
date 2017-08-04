@@ -1,0 +1,25 @@
+version: '2'
+services:
+  database:
+    image: mongo:3.4
+    ports:
+      - 27017:27017
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - 8025:8025
+  bot:
+    build: ./bot
+    volumes:
+      - ./bot:/kuxkuxeroa
+    environment:
+      - KUXKUXEROA_TELEGRAM_API_TOKEN=PUT_HERE_YOUR_TELEGRAM_TOKEN
+      - KUXKUXEROA_MONGODB_URI=mongodb://database:27017/kuxkuxeroa
+  api:
+    build: ./api
+    volumes:
+      - ./api:/api
+    ports:
+      - 3000:3000
+    environment:
+      - KUXKUXEROA_MONGODB_URI=mongodb://database:27017/kuxkuxeroa
